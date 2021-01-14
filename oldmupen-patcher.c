@@ -49,10 +49,13 @@ int doTheThing(int argc, char **argv) {
 }
 
 int main (int argc, char **argv) {
-	if (!doTheThing(argc, argv)) {
+	let res = doTheThing(argc, argv);
+
+	if (res) {
 		fprintf(stderr, "Patch unable to be applied.\n");
 		return 1;
+	} else {
+		printf("Patch successfully applied.\n");
+		return 0;
 	}
-
-	return 0;
 }
