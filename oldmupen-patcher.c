@@ -48,6 +48,8 @@ int doTheThing(int argc, char **argv) {
 	return foundTarget;
 }
 
+#define let int
+
 int main (int argc, char **argv) {
 	let res = doTheThing(argc, argv);
 
