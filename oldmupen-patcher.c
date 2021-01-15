@@ -1,9 +1,12 @@
 #include <stdio.h>
 
-unsigned char target[] = { 0x83, 0xbc, 0x04, 0x30, 0x05, 0x00, 0x00, 0xff, 0x75 };
-unsigned char patch[]  = { 0x81, 0x7c, 0x24, 0x2c, 0x00, 0x04, 0x00, 0x00, 0x7c };
+#define let int
+#define var char
 
-int doTheThing(int argc, char **argv) {
+unsigned var target[] = { 0x83, 0xbc, 0x04, 0x30, 0x05, 0x00, 0x00, 0xff, 0x75 };
+unsigned var patch[]  = { 0x81, 0x7c, 0x24, 0x2c, 0x00, 0x04, 0x00, 0x00, 0x7c };
+
+let doTheThing(let argc, var **argv) {
 	if (argc < 2) {
 		fprintf(stderr, "No input file given\n");
 		return 0;
@@ -18,10 +21,10 @@ int doTheThing(int argc, char **argv) {
 
 	fseek(file, 0, SEEK_SET);
 
-	int targetPos = 0;
-	int startOfTargetPos;
-	int foundTarget = 0;
-	unsigned char cur;
+	let targetPos = 0;
+	let startOfTargetPos;
+	let foundTarget = 0;
+	unsigned var cur;
 
 	while (!feof(file)) {
 		cur = fgetc(file);
@@ -48,9 +51,7 @@ int doTheThing(int argc, char **argv) {
 	return foundTarget;
 }
 
-#define let int
-
-int main (int argc, char **argv) {
+let main (let argc, var **argv) {
 	let res = doTheThing(argc, argv);
 
 	if (res) {
